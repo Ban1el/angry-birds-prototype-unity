@@ -17,6 +17,15 @@ public class Draggable : MonoBehaviour
     [SerializeField]
     private float delay_to_origin_speed;
     private bool mouse_released = true;
+    private Rigidbody2D rb;
+
+    [SerializeField]
+    private float force_multiplier = 6f;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -26,7 +35,10 @@ public class Draggable : MonoBehaviour
     private void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 
+    private void ReturnToOriginPoint()
+    {
         if (mouse_released)
         {
             transform.position = Vector2.Lerp(
@@ -56,6 +68,16 @@ public class Draggable : MonoBehaviour
     private void OnMouseUp()
     {
         mouse_released = true;
+
+        // Calculate the force direction
+        Vector2 forceDirection = (origin_point.position - transform.position).normalized;
+
+        // Calculate the force based on the distance
+        float distance = Vector2.Distance(transform.position, origin_point.position);
+        rb.gravityScale = 1f;
+
+        // Apply the force to the object's Rigidbody
+        rb.AddForce(forceDirection * (distance * force_multiplier), ForceMode2D.Impulse);
     }
 
     private void OnDrawGizmos()
