@@ -14,6 +14,10 @@ public class Draggable : MonoBehaviour
     [SerializeField]
     private Transform origin_point;
 
+    [SerializeField]
+    private float delay_to_origin_speed;
+    private bool mouse_released = true;
+
     private void Start()
     {
         spawn_position = transform.position;
@@ -22,6 +26,15 @@ public class Draggable : MonoBehaviour
     private void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (mouse_released)
+        {
+            transform.position = Vector2.Lerp(
+                transform.position,
+                origin_point.position,
+                delay_to_origin_speed * Time.deltaTime
+            );
+        }
     }
 
     private void OnMouseDown()
@@ -31,6 +44,7 @@ public class Draggable : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        mouse_released = false;
         Vector2 origin_position_2d = (Vector2)origin_point.position;
         Vector2 desired_position = mousePos - difference;
         Vector2 clampedPosition =
@@ -41,7 +55,7 @@ public class Draggable : MonoBehaviour
 
     private void OnMouseUp()
     {
-        transform.position = spawn_position;
+        mouse_released = true;
     }
 
     private void OnDrawGizmos()

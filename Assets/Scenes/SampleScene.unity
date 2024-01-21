@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area_radius: 3
   origin_point: {fileID: 1519129550}
+  delay_to_origin_speed: 1
 --- !u!58 &93077570
 CircleCollider2D:
   m_ObjectHideFlags: 0

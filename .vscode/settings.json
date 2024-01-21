@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "angry-birds.sln"
+    "dotnet.defaultSolution": "angry-birds-prototype-unity.sln"
 }
