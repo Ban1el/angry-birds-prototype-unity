@@ -11,7 +11,6 @@ public class Draggable : MonoBehaviour
     [SerializeField]
     private float area_radius;
 
-    [SerializeField]
     private Transform origin_point;
 
     [SerializeField]
@@ -21,6 +20,7 @@ public class Draggable : MonoBehaviour
 
     [SerializeField]
     private float force_multiplier = 6f;
+    public bool shoot = false;
 
     private void Awake()
     {
@@ -30,6 +30,7 @@ public class Draggable : MonoBehaviour
     private void Start()
     {
         spawn_position = transform.position;
+        origin_point = Actions.OriginPointPosition();
     }
 
     private void Update()
@@ -68,6 +69,7 @@ public class Draggable : MonoBehaviour
     private void OnMouseUp()
     {
         mouse_released = true;
+        shoot = true;
 
         // Calculate the force direction
         Vector2 forceDirection = (origin_point.position - transform.position).normalized;
@@ -82,7 +84,10 @@ public class Draggable : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(origin_point.position, area_radius);
+        if (origin_point != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(origin_point.position, area_radius);
+        }
     }
 }
