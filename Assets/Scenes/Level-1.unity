@@ -1409,6 +1409,10 @@ PrefabInstance:
       propertyPath: origin_point
       value: 
       objectReference: {fileID: 1519129550}
+    - target: {fileID: 2554233340220649311, guid: 31b570c867ce51d49ac3bf03faace96d, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5821362353695685357, guid: 31b570c867ce51d49ac3bf03faace96d, type: 3}
       propertyPath: m_Name
       value: Circle

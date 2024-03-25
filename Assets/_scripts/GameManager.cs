@@ -20,20 +20,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        SwitchScene("Level-1");
-    }
-
     private void SwitchScene(string scene)
     {
-        for (int i = 0; i < SceneManager.sceneCount; i++)
+        SceneManager.LoadScene(scene);
+    }
+
+    private void StartButtonPressed(string buttonType, string buttonName) 
+    {
+        if (buttonType == "main menu" && buttonName =="start")
         {
-            if (SceneManager.GetSceneByBuildIndex(i).name == scene)
-            {
-                Debug.Log(SceneManager.GetSceneByBuildIndex(i));
-                SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(i).name);
-            }
+            SwitchScene("Level-1");
         }
+    }
+
+    private void OnEnable()
+    {
+        Actions.OnButtonClick += StartButtonPressed;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnButtonClick -= StartButtonPressed;
     }
 }
