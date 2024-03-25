@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    private void StartButtonPressed(string buttonType, string buttonName) 
+    private void ButtonPressed(string buttonType, string buttonName) 
     {
         if (buttonType == "main menu" && buttonName =="start")
         {
@@ -33,13 +33,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Game State
+    private void GameOver()
+    {
+        Actions.OnEnableUI?.Invoke("game over");
+    }
+
     private void OnEnable()
     {
-        Actions.OnButtonClick += StartButtonPressed;
+        Actions.OnButtonClick += ButtonPressed;
+        Actions.OnGameOver += GameOver;
     }
 
     private void OnDisable()
     {
-        Actions.OnButtonClick -= StartButtonPressed;
+        Actions.OnButtonClick -= ButtonPressed;
+        Actions.OnGameOver -= GameOver;
     }
 }

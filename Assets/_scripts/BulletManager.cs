@@ -29,6 +29,10 @@ public class BulletManager : MonoBehaviour
            
             Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
         }
+        else if (bullets == null || bullets.Count == 0)
+        {
+            Actions.OnGameOver?.Invoke();
+        }
     }
 
     private void OnEnable()
