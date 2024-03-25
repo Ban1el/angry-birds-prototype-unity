@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private bool isDead = false;
+    public bool isActive = true;
     private Draggable drag;
     private Rigidbody2D rb;
 
@@ -16,17 +16,12 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        IsDead();
-    }
-
-    private void IsDead()
-    {
-        if (drag.shoot)
+        if (drag.shot)
         {
-            if (rb.velocity.x <= 0 && rb.velocity.y <= 0 && !isDead)
+            if (rb.velocity.x <= 0 && rb.velocity.y <= 0 && isActive)
             {
-                isDead = true;
                 drag.enabled = false;
+                isActive = false;
                 Actions.OnChangeBullet?.Invoke();
             }
         }
