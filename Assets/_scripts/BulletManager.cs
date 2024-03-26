@@ -13,6 +13,8 @@ public class BulletManager : MonoBehaviour
     [SerializeField]
     private GameObject bulletPrefab;
 
+    private bool alreadyWon = false;
+
     private void ChangeBullet()
     {
         if (bullets.Count > 0)
@@ -29,19 +31,26 @@ public class BulletManager : MonoBehaviour
            
             Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
         }
-        else if (bullets == null || bullets.Count == 0)
+        else if (bullets == null || bullets.Count == 0 && !alreadyWon)
         {
             Actions.OnGameOver?.Invoke();
         }
     }
 
+    private void AlreadyWon()
+    {
+        alreadyWon = true;
+    }
+
     private void OnEnable()
     {
         Actions.OnChangeBullet += ChangeBullet;
+        Actions.OnWin += AlreadyWon;
     }
 
     private void OnDisable()
     {
         Actions.OnChangeBullet -= ChangeBullet;
+        Actions.OnWin -= AlreadyWon;
     }
 }
