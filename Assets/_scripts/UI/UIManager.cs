@@ -12,6 +12,19 @@ public class UIManager : MonoBehaviour
         UserInterfaces.AddRange(controllers);
     }
 
+    private void Start()
+    {
+        DisableUIAll();
+    }
+
+    private void DisableUIAll()
+    {
+        foreach (UIController controller in UserInterfaces)
+        {
+            controller.gameObject.SetActive(false);
+        }
+    }
+
     private void TurnOnUI(string UIName)
     {
         foreach (UIController controller in UserInterfaces)
