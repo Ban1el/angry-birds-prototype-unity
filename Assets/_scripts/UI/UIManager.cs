@@ -14,13 +14,11 @@ public class UIManager : MonoBehaviour
 
     private void TurnOnUI(string UIName)
     {
-        Debug.Log("Here");
         foreach (UIController controller in UserInterfaces)
         {
             if (controller.UIName == UIName)
             {
                 controller.gameObject.SetActive(true);
-                Debug.Log(controller.UIName);
             }
         }
     }

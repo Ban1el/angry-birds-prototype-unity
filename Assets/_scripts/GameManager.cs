@@ -24,12 +24,21 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     private void ButtonPressed(string buttonType, string buttonName) 
     {
-        if (buttonType == "main menu" && buttonName =="start")
+        if (buttonType == "main menu" && buttonName == "start")
         {
             SwitchScene("Level-1");
+        }
+
+        if (buttonType == "game over" && buttonName == "retry")
+        {
+            RetryStage();
         }
     }
 
@@ -37,6 +46,10 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Actions.OnEnableUI?.Invoke("game over");
+    }
+    private void RetryStage()
+    {
+        ResetScene();
     }
 
     private void OnEnable()
