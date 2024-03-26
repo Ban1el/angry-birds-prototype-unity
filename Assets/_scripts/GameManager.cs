@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
     {
         Actions.OnEnableUI?.Invoke("game over");
     }
+
+    private void Win()
+    {
+        Actions.OnEnableUI?.Invoke("win screen");
+    }
+
     private void RetryStage()
     {
         ResetScene();
@@ -56,11 +62,13 @@ public class GameManager : MonoBehaviour
     {
         Actions.OnButtonClick += ButtonPressed;
         Actions.OnGameOver += GameOver;
+        Actions.OnWin += Win;
     }
 
     private void OnDisable()
     {
         Actions.OnButtonClick -= ButtonPressed;
         Actions.OnGameOver -= GameOver;
+        Actions.OnWin -= Win;
     }
 }
