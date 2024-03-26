@@ -8,6 +8,11 @@ public static class Actions
     public static Action OnChangeBullet;
     public static Func<Transform> OriginPointPosition;
     public static Action OnGameOver;
+    public static Action OnWin;
+
+    //Enemy
+    public static Action OnAddEnemyCounter;
+    public static Action OnEnemyDeath;
 
     //UI
     //1P: Button Type
@@ -16,4 +21,7 @@ public static class Actions
     //Enable UI
     //1p: UI name
     public static Action<string> OnEnableUI;
+
+    //Developer tools
+    public static Action OnKillAllEnemies;
 }
