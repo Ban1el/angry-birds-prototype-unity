@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         DisableUIAll();
+        TurnOnUI("ingame");
     }
 
     private void DisableUIAll()

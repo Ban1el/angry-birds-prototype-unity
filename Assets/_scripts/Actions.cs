@@ -10,6 +10,9 @@ public static class Actions
     public static Action OnGameOver;
     public static Action OnWin;
 
+    //Score
+    public static Action<int> OnGetPoints;
+
     //Enemy
     public static Action OnAddEnemyCounter;
     public static Action OnEnemyDeath;
@@ -21,6 +24,10 @@ public static class Actions
     //Enable UI
     //1p: UI name
     public static Action<string> OnEnableUI;
+    //Set UI text
+    //1P: Text
+    //2P: UI name
+    public static Action<string, string> OnSetUIText;
 
     //Developer tools
     public static Action OnKillAllEnemies;
