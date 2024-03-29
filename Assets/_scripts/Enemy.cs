@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float impact_hit_force = 10f;
 
+    [SerializeField]
+    private int points = 5000;
+
     private void Start()
     {
         Actions.OnAddEnemyCounter?.Invoke();
@@ -17,7 +20,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.relativeVelocity.magnitude >= impact_hit_force)
         {
-            Destroy(gameObject);
+            KillEnemy();
         }
     }
 
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void KillEnemy()
     {
+        Actions.OnGetPoints?.Invoke(points);
         Destroy(gameObject);
     }
 

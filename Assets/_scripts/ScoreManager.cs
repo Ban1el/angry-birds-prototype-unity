@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    private int score;
+
     private void AddPoints(int points)
     {
-        Actions.OnSetUIText?.Invoke(points.ToString(), "score");
+        score += points;
+        Actions.OnSetUIText?.Invoke(score.ToString(), "score");
     }
 
     private void OnEnable()
