@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,6 +11,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private int points = 5000;
+
+    [SerializeField]
+    private GameObject scoreUIPrefab;
 
     private void Start()
     {
@@ -31,6 +35,10 @@ public class Enemy : MonoBehaviour
 
     private void KillEnemy()
     {
+        GameObject trans = Instantiate(scoreUIPrefab, this.transform.position, Quaternion.identity);
+        TextMeshProUGUI scoreUI = trans.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        scoreUI.text = points.ToString();
+
         Actions.OnGetPoints?.Invoke(points);
         Destroy(gameObject);
     }

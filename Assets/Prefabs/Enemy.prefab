@@ -162,3 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impact_hit_force: 2
+  points: 5000
+  scoreUIPrefab: {fileID: 6647709104208079532, guid: ef9c230bc69cf9b44b1d9db14cf7a2f5, type: 3}
