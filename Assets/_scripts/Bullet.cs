@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -7,6 +9,9 @@ public class Bullet : MonoBehaviour
     public bool isActive = true;
     private Draggable drag;
     private Rigidbody2D rb;
+
+    [SerializeField]
+    private GameObject scoreUIPrefab;
 
     private void Awake()
     {
@@ -24,6 +29,18 @@ public class Bullet : MonoBehaviour
                 isActive = false;
                 Actions.OnChangeBullet?.Invoke();
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("obstacle"))
+        {
+            int points = Mathf.RoundToInt(collision.gameObject.GetComponent<Obstacle>().pointMultiplier * collision.relativeVelocity.magnitude);
+            GameObject trans = Instantiate(scoreUIPrefab, this.transform.position, Quaternion.identity);
+            TextMeshProUGUI scoreUI = trans.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            scoreUI.text = points.ToString();
+            Actions.OnGetPoints?.Invoke(points);
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1697371358727528484}
   - component: {fileID: 3611601051110860884}
   - component: {fileID: 4339800328345008004}
+  - component: {fileID: 1575735562157366377}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -164,3 +165,17 @@ MonoBehaviour:
   impact_hit_force: 2
   points: 5000
   scoreUIPrefab: {fileID: 6647709104208079532, guid: ef9c230bc69cf9b44b1d9db14cf7a2f5, type: 3}
+--- !u!114 &1575735562157366377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901120537797074866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35397de4992dd37478cd59df4456846c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointMultiplier: 50
+  points: 0

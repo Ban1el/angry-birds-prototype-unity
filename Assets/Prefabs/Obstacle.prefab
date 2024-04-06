@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7579494059229362411}
   - component: {fileID: 5288208536511511958}
   - component: {fileID: 4855356477297001370}
-  - component: {fileID: 4691444986776612660}
+  - component: {fileID: 8813072699842565520}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: obstacle
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4691444986776612660
+--- !u!114 &8813072699842565520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5860961124818805557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dddc0aeebd8eb62429bf506a658c9941, type: 3}
+  m_Script: {fileID: 11500000, guid: 35397de4992dd37478cd59df4456846c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointMultiplier: 50
+  points: 0

@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area_radius: 3
   delay_to_origin_speed: 10
-  force_multiplier: 5
+  force_multiplier: 6
   shot: 0
 --- !u!58 &1206007391193417188
 CircleCollider2D:
@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  scoreUIPrefab: {fileID: 6647709104208079532, guid: ef9c230bc69cf9b44b1d9db14cf7a2f5, type: 3}
